@@ -1,0 +1,226 @@
+.dart_tool/
+.screenshots/
+.idea/
+build/
+linux/flutter/
+windows/flutter/
+macos/flutter/
+
+.DS_Store              # macOS Finder 目录元数据
+._*                    # macOS 资源分叉文件（拷贝到非 HFS 磁盘时产生）
+.AppleDouble           # macOS 网络共享元数据
+.LSOverride            # macOS Finder 覆盖记录
+Icon                   # macOS 自定义图标文件
+
+Thumbs.db              # Windows 资源管理器缩略图缓存
+ehthumbs.db            # Windows 视频缩略图缓存
+Desktop.ini            # Windows 文件夹自定义配置
+$RECYCLE.BIN/          # Windows 回收站
+*.lnk                  # Windows 快捷方式
+
+*~                     # Linux/编辑器产生的备份临时文件
+.fuse_hidden*          # Linux FUSE 隐藏文件
+.directory             # Linux KDE 目录配置
+.Trash-*               # Linux 回收站目录
+
+# =============================================================
+# ② Dart 生态通用忽略规则（pub 工具链与编译中间产物）
+# =============================================================
+.dart_tool/            # Dart 工具链本地状态（package_config、build 缓存）
+.packages              # 旧版 Dart 包映射文件（已由 .dart_tool 取代）
+.pub-cache/            # 本地 pub 依赖缓存
+.pub/                  # pub 全局缓存目录
+.build/                # Dart 通用构建输出
+.buildlog/             # 构建日志
+**/doc/api/            # dart doc 生成的 API 文档
+build/
+
+# pubspec.lock 说明：
+# - 应用程序（本项目属于此类）应当提交 pubspec.lock，保证依赖版本可复现
+# - 若作为纯库/包发布，可取消下一行注释
+# pubspec.lock
+
+# =============================================================
+# ③ Flutter 通用忽略规则（flutter 工具自动生成的文件）
+# =============================================================
+/build/                          # flutter build 所有平台的构建输出根目录
+.flutter-plugins                 # 插件注册表（flutter pub get 自动生成）
+.flutter-plugins-dependencies    # 插件依赖图（flutter pub get 自动生成）
+.widget_preview/                 # Widget Preview 工具的预览产物
+.metadata                        # 注意：此文件应提交，用于 flutter 工具追踪项目平台配置
+.flutter/                        # 本地 Flutter SDK 链接（罕见，防御性规则）
+.flutter-plugins.json            # 部分旧版本生成的插件清单
+
+# 符号化相关（性能分析用，体积大且可重新生成）
+app.*.symbols
+
+# 代码混淆相关（符号映射文件，脱敏后体积巨大，且含源码信息）
+app.*.map.json
+
+# 代码生成器产物（build_runner / freezed / json_serializable 等）
+# 团队约定「不提交生成代码」时取消注释；若提交则保持注释
+# **/*.g.dart
+# **/*.freezed.dart
+# **/*.mocks.dart
+# **/*.gr.dart
+# **/*.pb.dart
+# **/*.pbjson.dart
+# **/*.pbserver.dart
+
+# Flutter 国际化生成产物（flutter gen-l10n）
+# 若使用 gen-l10n 且未设置 synthetic-package:false，可取消注释
+# .dart_tool/flutter_gen/
+
+# =============================================================
+# ④ Android 平台构建产物与本地配置
+# =============================================================
+# Android Studio / Gradle 会把 Flutter 构建产物放在以下位置
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Gradle 本地缓存与构建输出（防御性规则， Flutter 默认输出在根 /build/）
+/android/.gradle/
+/android/build/
+/android/app/build/
+/android/local.properties    # 本地 Android SDK 路径，每台机器不同，严禁提交
+/android/captures/           # Android Studio 性能抓取
+/android/gradle-wrapper.jar  # 可选：团队若统一用 flutter 包装器可忽略
+/android/keystore.properties # 签名配置（见 ⑫）
+
+# NDK / CMake 编译中间产物
+/android/app/.cxx/
+/android/app/src/main/jniLibs/**/*.so  # 仅当 so 由本地 NDK 构建生成时适用
+
+# =============================================================
+# ⑤ iOS 平台构建产物与本地配置（当前无 ios/ 目录，保留备用）
+# =============================================================
+**/ios/Flutter/.last_build_id          # 本地最后一次构建编号
+**/ios/Flutter/flutter_assets/         # 打包进 iOS 的资源快照
+**/ios/Flutter/flutter_export_environment.sh  # 本地环境脚本
+**/ios/ServiceDefinitions.json         # 旧版 Flutter 服务定义
+**/ios/Runner/GeneratedPluginRegistrant.*  # 仅团队约定「不提交生成代码」时启用
+
+# CocoaPods 相关（iOS 集成 Flutter 时产生）
+**/ios/Pods/                 # CocoaPods 依赖目录（由 pod install 重建）
+**/ios/.symlinks/            # Flutter 插件符号链接
+**/ios/Podfile.lock          # 可选：应用可提交，库项目建议忽略
+
+# Xcode 构建与用户状态
+**/ios/DerivedData/
+**/ios/xcuserdata/
+**/*.xcuserstate
+**/*.xcscmblueprint
+
+# Swift Package Manager
+**/.swiftpm/
+**/ios/Flutter/.build/
+
+# =============================================================
+# ⑥ macOS 平台构建产物与本地配置（当前无 macos/ 目录，保留备用）
+# =============================================================
+**/macos/Flutter/ephemeral/            # Flutter macOS 本地临时目录
+**/macos/Pods/
+**/macos/.symlinks/
+**/macos/build/
+**/macos/DerivedData/
+**/macos/xcuserdata/
+**/*.xcuserstate
+
+# =============================================================
+# ⑦ Web 平台构建产物（build/web 已由 /build/ 覆盖，此处为补充）
+# =============================================================
+build/web/
+build/_webpack/
+web/favicon.png.metadata  # 防御性规则：极少使用
+
+# =============================================================
+# ⑧ Windows 平台构建产物与本地配置
+# =============================================================
+**/windows/flutter/ephemeral/          # Flutter Windows 本地临时目录（含插件注册头文件）
+**/windows/flutter/generated_plugin_registrant.*  # 仅约定「不提交生成代码」时启用
+**/windows/build/
+**/windows/.cxx/
+
+# =============================================================
+# ⑨ Linux 平台构建产物与本地配置
+# =============================================================
+**/linux/flutter/ephemeral/            # Flutter Linux 本地临时目录
+**/linux/flutter/generated_plugin_registrant.*    # 仅约定「不提交生成代码」时启用
+**/linux/build/
+**/linux/.cxx/
+
+# =============================================================
+# ⑩ IDE / 编辑器专属忽略规则
+# =============================================================
+# --- IntelliJ IDEA / Android Studio ---
+.idea/                 # IDE 工作区配置（含个人本地设置，不宜共享）
+*.iml                  # 模块文件（Flutter 模板即忽略，含本机的 f_tools.iml）
+*.ipr                  # 项目级配置文件
+*.iws                  # 工作区配置文件
+
+# --- VS Code ---
+# .vscode/ 中可能有团队共享的 launch.json / settings.json，
+# Flutter 模板默认注释此行；如需完全忽略请取消注释
+#.vscode/
+
+# --- Android Studio（IDE 级）---
+*.aab.metadata
+
+# --- 其他编辑器 ---
+.atom/                 # Atom 编辑器
+.history/              # VS Code Local History 插件
+.sublime-workspace     # Sublime Text 工作区
+.sublime-project
+*.swp                  # Vim 交换文件
+*.swo
+*~                     # （已在 ① 覆盖）
+
+# =============================================================
+# ⑪ 日志、测试产物与临时输出
+# =============================================================
+*.log                  # 各类日志文件
+logs/                  # 日志目录
+npm-debug.log*         # 防御性规则：Web 工具链混用时
+yarn-debug.log*
+yarn-error.log*
+
+/coverage/             # flutter test --coverage 生成
+/screenshots/          # golden test / 截图失败产物
+.screenshots/          # 本项目已有的截图产物目录
+/test/failure_report/  # 部分测试框架失败报告目录
+flutte*.png            # flutter test 产生的失败截图（flutte_0.png 等）
+
+# 临时与备份文件
+*.bak
+*.tmp
+*.orig
+*.swp
+migrate_working_dir/   # flutter migrate 工作目录
+
+# =============================================================
+# ⑫ 敏感配置与本地调试文件（严禁入库）
+# =============================================================
+# 密钥与签名文件
+*.jks                  # Android 签名 keystore
+*.keystore             # Android 签名 keystore
+key.properties         # keystore 密码配置
+*.mobileprovision      # iOS 描述文件
+*.p12                  # 证书文件
+*.pem                  # 证书/密钥
+*.certSigningRequest
+
+# 环境变量与本地配置（如使用 --dart-define-from-file）
+.env
+.env.*
+*.env
+
+# Firebase / 各类服务配置（含 API Key，建议改为受控分发）
+google-services.json.metadata  # 防御性规则
+firebase_debug.log
+
+# 本地调试与抓包文件
+*.har                  # 抓包文件
+*.pcap
+
+# 符号表（已在 ③ 覆盖 app.*.symbols / app.*.map.json）
